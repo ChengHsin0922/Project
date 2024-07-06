@@ -6,25 +6,59 @@
     <title>Document</title>
     <script src="../Project/jquery-3.7.1.min.js"></script>
     <style>
-        #container {
+        #navBar {
+            background-color: lightgrey;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content:center;
+            height: 50px;
+            border: 1px solid black;
+        }
+        #banner {
+            background-color: lightslategray;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content:center;
+            height: 150px;
+            border: 1px solid black;
+        }
+        #shopContainer {
             display: flex;
         }
         #map {
             background-color: lightgreen;
             flex: 1;
-            
+            height: 300px;
+            border: 1px solid black;
         }
         #shop {
             background-color: lightsalmon;
             flex: 1;
+            height: 300px;
+            border: 1px solid black;
         }
     </style>
 </head>
 <body>
-    
-    <div id="container">
-        <div id="map">1</div>
-        <div id="shop">2</div>
+    <div id="navBar">
+        <h1>
+            這裡是導覽列
+        </h1>
+    </div>
+    <div>
+        <div id="banner">
+            <h1>
+                這裡是主視覺
+            </h1>
+        </div>
+    </div>
+    <div id="shopContainer">
+        <div id="map">
+            <div id="mapNav"></div>
+        </div>
+        <div id="shop"></div>
     </div>
 </body>
 </html>
