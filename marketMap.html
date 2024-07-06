@@ -1,64 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="../Project/jquery-3.7.1.min.js"></script>
+    <!-- jQuery -->
+    <script src="jquery-3.7.1.min.js"></script>
+    <!-- Google icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
+        /* 導覽列 */
         #navBar {
-            background-color: lightgrey;
+            background-color: #FFEA20;
             display: flex;
             text-align: center;
             align-items: center;
-            justify-content:center;
+            justify-content: center;
             height: 50px;
             border: 1px solid black;
         }
+        /* 導覽列 */
+
+        /* 主視覺 */
         #banner {
-            background-color: lightslategray;
+            background-color: #8dcbe6;
             display: flex;
             text-align: center;
             align-items: center;
-            justify-content:center;
+            justify-content: center;
             height: 150px;
             border: 1px solid black;
         }
+        /* 主視覺 */
+        
+        /* 市集地圖、攤位資訊 */
         #shopContainer {
             display: flex;
         }
+        /* 市集地圖、攤位資訊 */
+
+         /* 左側地圖div */
         #map {
-            background-color: lightgreen;
+            background-color: #8dcbe6;
             flex: 1;
-            height: 300px;
             border: 1px solid black;
         }
-        #shop {
-            background-color: lightsalmon;
-            flex: 1;
-            height: 300px;
+        /* 左側地圖div */
+
+        /* 左側地圖導覽列 */
+        #mapNav {
+            background-color: #FFEA20;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
             border: 1px solid black;
+        }
+        /* 左側地圖導覽列 */
+        
+        /* 左側攤位位置 */
+        .shopLoaction {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            border-spacing: 0 30px;
+        }
+        .shopLoaction td {
+            background-color: #9df1df;
+            border: 1px solid black;
+            padding: 15px;
+        }
+        /* 左側攤位位置 */
+        
+        /* 右側攤位資訊 */
+        #shop {
+            background-color: #8dcbe6;
+            flex: 1;
+            border: 1px solid black;
+        }
+        /* 右側攤位資訊 */
+
+        #shop>div {
+            border: 1px solid black;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        #shopNav {
+            background-color: #FFEA20;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid black;
+        }
+        #shopPhoto {
+            
+        }
+        #shopBanner {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+        }
+        #shopDetail {
+            background-color: #9df1df;
+        }
+        #shopDetail p {
+            margin: 3px;
+        }
+
+        #shopBtn {
+            display: flex;
+            background-color: #e3f6ff;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            float: right;
+            height: 30px;
+            width: 30%;
         }
     </style>
 </head>
+
 <body>
     <div id="navBar">
         <h1>
-            這裡是導覽列
+            導覽列
         </h1>
     </div>
     <div>
         <div id="banner">
             <h1>
-                這裡是主視覺
+                主視覺
             </h1>
         </div>
     </div>
     <div id="shopContainer">
         <div id="map">
-            <div id="mapNav"></div>
+            <div id="mapNav">
+                <h3>地圖導覽列</h3>
+            </div>
+            <table class="shopLoaction">
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+            </table>
         </div>
-        <div id="shop"></div>
+        <div id="shop">
+            <div id="shopNav">
+                <h3 id="shopPhoto">攤位圖片/名稱/簡介</h3>
+            </div>
+            <div id="shopBanner">
+                <h3>攤位主視覺</h3>
+            </div>
+            <div id="shopDetail">
+                <p>攤位資訊</p>
+                <p>攤位資訊</p>
+                <p>攤位資訊</p>
+            </div>
+            <div id="shopBtn">
+                <i class="material-icons">thumb_up</i>
+                <i id="likeBtn" class="material-icons">favorite_border</i>
+                <i class="material-icons">question_answer</i>
+            </div>
+        </div>
     </div>
+    <script>
+        $(function () {
+            $('td').on('click', function () {
+                console.log(typeof this);
+                let x = this.innerText;
+                $('#shop').append(`<div class="shopDetail">${x}</div>`);
+            })
+        });
+        $('#likeBtn').on('click',function() {
+            // console.log(this);
+            if(this.innerText == 'favorite_border') {
+                this.innerText = 'favorite';
+            }else {
+                this.innerText = 'favorite_border';
+            }
+        })
+    </script>
 </body>
+
 </html>
