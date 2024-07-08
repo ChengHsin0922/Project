@@ -13,15 +13,15 @@
     <style>
         /* 字型 */
         @font-face {
-            font-family: 'ChenYuluoyan';
-            src: local("ChenYuluoyan-Thin")
-            url('../font/ChenYuluoyan-Thin.woff')format("woff"),
-            url('../font/ChenYuluoyan-Thin.ttf')format("truetype"),
-            url('../font/ChenYuluoyan-Thin.eot')format("embedded-opentype"),
+            font-family: 'ChenYuluoyan-Thin-Monospaced';
+            src: local("ChenYuluoyan-Thin-Monospaced")
+            url('../font/ChenYuluoyan-Thin-Monospaced.woff')format("woff"),
+            url('../font/ChenYuluoyan-Thin-Monospaced.ttf')format("truetype"),
+            url('../font/ChenYuluoyan-Thin-Monospaced.eot')format("embedded-opentype"),
         }
-        body {
-            font-family: 'ChenYuluoyan';
-        }
+        /* body {
+            font-family: 'ChenYuluoyan-Thin-Monospaced';
+        } */
         /* 字型 */
         /* 導覽列 */
         #nav_bar {
@@ -136,6 +136,7 @@
             right: 0;
             height: 30px;
             width: 30%;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -168,28 +169,28 @@
                     <td>6</td>
                 </tr>
                 <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
                 </tr>
                 <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
                 </tr>
                 <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>24</td>
                 </tr>
             </table>
         </div>
@@ -211,11 +212,28 @@
         </div>
     </div>
     <script>
+        let myphpserver = 'http://localhost/Project_data/project_mysql_RESTful.php';
         $(function () {
-            $('td').on('click', function () {
-                // console.log(typeof this);
-                let shop_number = this.innerText;
-                $('#shop_detail').html(`<p class="shop_detail">${shop_number}</p>`);
+            $('td').on('click',function () {
+                console.log(this.innerText);   //測試td點擊有反應
+                let vidNumber =  this.innerText;
+                $.ajax({
+                url: myphpserver,
+                method: 'GET',
+                data: {vid: vidNumber },
+                success: function (x) {
+                    console.log('success:', x);
+                }
+            })
+                .done(function (y) {
+                    console.log('done:', y);
+                })
+                .fail(function (z) {
+                    console.log('fail:', z);
+                })
+                .always(function (w) {
+                    console.log('always:', w);
+                });
             })
         });
         $('#likeBtn').on('click',function () {
@@ -226,6 +244,7 @@
                 this.innerText = 'favorite_border';
             }
         })
+        
     </script>
 </body>
 
