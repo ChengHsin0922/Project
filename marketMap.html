@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         /* 導覽列 */
-        #navBar {
+        #nav_bar {
             background-color: #FFEA20;
             display: flex;
             text-align: center;
@@ -35,7 +35,7 @@
         /* 主視覺 */
         
         /* 市集地圖、攤位資訊 */
-        #shopContainer {
+        #shop_container {
             display: flex;
         }
         /* 市集地圖、攤位資訊 */
@@ -49,7 +49,7 @@
         /* 左側地圖div */
 
         /* 左側地圖導覽列 */
-        #mapNav {
+        #map_nav {
             background-color: #FFEA20;
             display: flex;
             text-align: center;
@@ -60,14 +60,14 @@
         /* 左側地圖導覽列 */
         
         /* 左側攤位位置 */
-        .shopLoaction {
+        .shop_loaction {
             display: flex;
             text-align: center;
             align-items: center;
             justify-content: center;
             border-spacing: 0 30px;
         }
-        .shopLoaction td {
+        .shop_loaction td {
             background-color: #9df1df;
             border: 1px solid black;
             padding: 15px;
@@ -88,7 +88,7 @@
             align-items: center;
             justify-content: center;
         }
-        #shopNav {
+        #shop_nav {
             background-color: #FFEA20;
             display: flex;
             text-align: center;
@@ -96,24 +96,21 @@
             justify-content: center;
             border: 1px solid black;
         }
-        #shopPhoto {
-            
-        }
-        #shopBanner {
+        #shop_banner {
             display: flex;
             text-align: center;
             align-items: center;
             justify-content: center;
             height: 300px;
         }
-        #shopDetail {
+        #shop_detail {
             background-color: #9df1df;
         }
-        #shopDetail p {
+        #shop_detail p {
             margin: 3px;
         }
 
-        #shopBtn {
+        #shop_btn {
             display: flex;
             background-color: #e3f6ff;
             text-align: center;
@@ -127,7 +124,7 @@
 </head>
 
 <body>
-    <div id="navBar">
+    <div id="nav_bar">
         <h1>
             導覽列
         </h1>
@@ -139,12 +136,12 @@
             </h1>
         </div>
     </div>
-    <div id="shopContainer">
+    <div id="shop_container">
         <div id="map">
-            <div id="mapNav">
+            <div id="map_nav">
                 <h3>地圖導覽列</h3>
             </div>
-            <table class="shopLoaction">
+            <table class="shop_loaction">
                 <tr>
                     <td>1</td>
                     <td>2</td>
@@ -180,18 +177,18 @@
             </table>
         </div>
         <div id="shop">
-            <div id="shopNav">
-                <h3 id="shopPhoto">攤位圖片/名稱/簡介</h3>
+            <div id="shop_nav">
+                <h3 id="shop_photo">攤位圖片/名稱/簡介</h3>
             </div>
-            <div id="shopBanner">
+            <div id="shop_banner">
                 <h3>攤位主視覺</h3>
             </div>
-            <div id="shopDetail">
+            <div id="shop_detail">
                 <p>攤位資訊</p>
                 <p>攤位資訊</p>
                 <p>攤位資訊</p>
             </div>
-            <div id="shopBtn">
+            <div id="shop_btn">
                 <i class="material-icons">thumb_up</i>
                 <i id="likeBtn" class="material-icons">favorite_border</i>
                 <i class="material-icons">question_answer</i>
@@ -201,12 +198,12 @@
     <script>
         $(function () {
             $('td').on('click', function () {
-                console.log(typeof this);
-                let x = this.innerText;
-                $('#shop').append(`<div class="shopDetail">${x}</div>`);
+                // console.log(typeof this);
+                let shop_number = this.innerText;
+                $('#shop').append(`<div class="shop_detail">${shop_number}</div>`);
             })
         });
-        $('#likeBtn').on('click',function() {
+        $('#likeBtn').on('click',function () {
             // console.log(this);
             if(this.innerText == 'favorite_border') {
                 this.innerText = 'favorite';
