@@ -118,12 +118,13 @@
             height: 200px;
         }
         #shop_detail {
+            display: flex;
             background-color: #9df1df;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
         }
-        #shop_detail p {
-            margin: 3px;
-        }
-
         #shop_btn {
             display: flex;
             background-color: #e3f6ff;
@@ -141,21 +142,21 @@
 
 <body>
     <div id="nav_bar">
-        <h1>
+        <h2>
             導覽列
-        </h1>
+        </h2>
     </div>
     <div>
         <div id="banner">
-            <h1>
+            <h2>
                 主視覺
-            </h1>
+            </h2>
         </div>
     </div>
     <div id="shop_container">
         <div id="map">
             <div id="map_nav">
-                <h3>地圖導覽列</h3>
+                <h4>地圖導覽列</h4>
             </div>
             <table class="shop_loaction">
                 <tr>
@@ -194,15 +195,13 @@
         </div>
         <div id="shop">
             <div id="shop_nav">
-                <h3 id="shop_photo">攤位圖片/名稱/簡介</h3>
+                <h4 id="shop_photo">攤位圖片/名稱/簡介</h4>
             </div>
             <div id="shop_banner">
-                <h3>攤位主視覺</h3>
+                <h4>攤位主視覺</h4>
             </div>
             <div id="shop_detail">
-                <p>攤位資訊</p>
-                <p>攤位資訊</p>
-                <p>攤位資訊</p>
+                攤位資訊
             </div>
             <div id="shop_btn">
                 <i class="material-icons">thumb_up</i>
@@ -216,7 +215,7 @@
             $('td').on('click', function () {
                 // console.log(typeof this);
                 let shop_number = this.innerText;
-                $('#shop').append(`<div class="shop_detail">${shop_number}</div>`);
+                $('#shop_detail').html(`<p class="shop_detail">${shop_number}</p>`);
             })
         });
         $('#likeBtn').on('click',function () {
