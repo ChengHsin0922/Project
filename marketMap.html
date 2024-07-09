@@ -96,18 +96,13 @@
         }
         /* 右側攤位資訊 */
 
-        #shop>div {
-            border: 1px solid black;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-        }
+        
         #shop_nav {
             background-color: #8dcbe6;
             display: flex;
             text-align: center;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;    
             border: 1px solid black;
         }
         #shop_banner {
@@ -138,7 +133,27 @@
             width: 30%;
             cursor: pointer;
         }
-        
+        ul {
+            display: flex;
+            list-style: none;
+            border: 1px solid black;
+        }
+        ul>li {
+            margin-right: 50px;
+            border: 1px solid black;
+        }
+        #brand_logo {
+            border: 1px solid black;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 50px;
+        }
+        #brand_logo>img {
+            max-width: 100%;
+            max-height: 100%;
+        }
     </style>
 </head>
 
@@ -197,7 +212,10 @@
         </div>
         <div id="shop">
             <div id="shop_nav">
-                <h4 id="shop_photo">攤位圖片/名稱/簡介</h4>
+                <div id="brand_logo">
+                    <img src="./Image/logo2.jpg" alt="">
+                </div>
+                <p id="brand_name">攤位名稱</p>
             </div>
             <div id="shop_banner">
                 <h4>攤位主視覺</h4>
@@ -214,6 +232,8 @@
     </div>
     <script>
         let myphpserver = 'http://localhost/Project_data/project_mysql_RESTful.php';
+        let shop_name;
+        let shop_describe;
         $(function () {
             $('td').on('click',function () {
                 console.log(this.innerText);   //測試td點擊有反應
@@ -221,9 +241,16 @@
                 $.ajax({
                 url: myphpserver,
                 method: 'GET',
-                data: {vid: vidNumber },
-                success: function (x) {
-                    console.log('success:', x);
+                data: {vinfo: vidNumber },
+                success: function (obj) {
+                    console.log('success:', obj['0'].brand_name);
+                    shop_name = obj['0'].brand_name;
+                    // console.log($('#brand_name')[0].innerText);
+                    shop_describe = obj['0'].describe;
+                    // console.log(obj['0'].describe);
+                    $('#brand_name')[0].innerText = shop_name;
+                    console.log($('#shop_detail')[0].innerText);
+                    $('#shop_detail')[0].innerText = shop_describe;
                 }
             })
                 .done(function (y) {
@@ -238,14 +265,13 @@
             })
         });
         $('#likeBtn').on('click',function () {
-            // console.log(this);
+            console.log(this);
             if(this.innerText == 'favorite_border') {
                 this.innerText = 'favorite';
             }else {
                 this.innerText = 'favorite_border';
             }
         })
-        
     </script>
 </body>
 
