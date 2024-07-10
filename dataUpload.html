@@ -94,7 +94,7 @@
             $.ajax({
                 url: myphpserver,
                 method: 'POST',
-                contentType: 'text/plain',
+                contentType: 'application/json',  //這邊告訴伺服器傳送的是JSON字串格式的資料
                 data: JSON.stringify({  
                     brand_name: $('#brand_name').val(),
                     brand_type: $('#brand_type').val(),
