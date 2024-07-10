@@ -7,8 +7,8 @@
     <title>Document</title>
     <!-- jQuery -->
     <script src="jquery-3.7.1.min.js"></script>
-    <!-- Google icon -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- font awesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <style>
         /* 字型 */
@@ -84,6 +84,7 @@
             background-color: #9df1df;
             border: 1px solid black;
             padding: 15px;
+            cursor: pointer;
         }
         /* 左側攤位位置 */
         
@@ -119,8 +120,8 @@
             text-align: center;
             align-items: center;
             justify-content: center;
-            height: 100px;
             border: 1px solid black;
+            padding: 15px;
         }
         #shop_btn {
             display: flex;
@@ -133,8 +134,12 @@
             right: 0;
             height: 30px;
             width: 30%;
-            cursor: pointer;
             border: 1px solid black;
+            padding: 5px;
+        }
+        #shop_btn>i {
+            cursor: pointer;
+            margin: 1px;
         }
         ul {
             display: flex;
@@ -156,6 +161,9 @@
         #brand_logo>img {
             max-width: 100%;
             max-height: 100%;
+        }
+        .shopDescribe {
+            text-align: left;
         }
     </style>
 </head>
@@ -216,6 +224,7 @@
         <div id="shop">
             <div id="shop_nav">
                 <div id="brand_logo">
+                    <img src="" class="">
                 </div>
                 <p id="brand_name">攤位名稱</p>
             </div>
@@ -223,12 +232,12 @@
                 <h4>攤位主視覺</h4>
             </div>
             <div id="shop_detail">
-                攤位資訊
+                <p class="shopDescribe">攤位資訊</p>
             </div>
             <div id="shop_btn">
-                <i class="material-icons">thumb_up</i>
-                <i id="likeBtn" class="material-icons">favorite_border</i>
-                <i class="material-icons">question_answer</i>
+                <i class="fa fa-instagram" style="font-size:30px"></i>
+                <i class="fa fa-facebook-square" style="font-size:30px"></i>
+                <i class="fa fa-twitter" style="font-size:30px"></i>
             </div>
         </div>
     </div>
@@ -246,17 +255,15 @@
                 method: 'GET',
                 data: {vinfo: vidNumber },
                 success: function (obj) {
-                    console.log('success:', obj['0'].brand_name);
+                    //透過vinfo號碼取得攤位名稱
                     shop_name = obj['0'].brand_name;
-                    // console.log($('#brand_name')[0].innerText);
-                    shop_describe = obj['0'].describe;
-                    // console.log(obj['0'].describe);
-                    logo_image = obj['0'].logo_image;
-                    console.log(obj['0'].logo_image);
                     $('#brand_name')[0].innerText = shop_name;
-                    console.log($('#shop_detail')[0].innerText);
-                    $('#shop_detail')[0].innerText = shop_describe;
-                    $('#brand_logo').append(`<img src="${logo_image}">`);
+                    //取得攤位logo
+                    logo_image = obj['0'].logo_img;
+                    $('#brand_logo>img')['0'].src = logo_image;
+                    //取得攤位描述
+                    shop_describe = obj['0'].describe;
+                    $('#shop_detail>p')['0'].innerText = shop_describe;
                 }
             })
                 .done(function (y) {
