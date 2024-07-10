@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.7.1.min.js"></script>
+    <style>
+        #x1 {
+            background-color: pink;
+            height: 150px;
+        }
+        #x2 {
+            display: flex;
+        }
+        #x2>div:nth-child(1) {
+            background-color: lightblue;
+            flex: 1;
+        }
+        #x2>div:nth-child(2) {
+            background-color: lightgreen;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="x1">
+        
+    </div>
+    <div id="x2" >
+        <div >
+            <button id="btn_all_vendor">全部攤位</button>
+            <!-- <button id="btnStudent">單一學生</button> -->
+            <button id="btn_insert_vendor">新增攤位</button>
+            <!-- <button id="btnDeleteStudent">刪除學生</button> -->
+            <!-- <button id="btnUpdateStudent">更新學生</button> -->
+            <hr>
+            <label for="brand_name">攤位名稱:</label>
+            <input id="brand_name" type="text">
+            <br>
+            <label for="brand_type">攤位類別:</label>
+            <input id="brand_type" type="text">
+            <br>
+            <label for="logo_img">攤位Logo:</label>
+            <input id="logo_img" type="text">
+            <br>
+            <label for="brand_img01">攤位圖片1:</label>
+            <input id="brand_img01" type="text">
+            <br>
+            <label for="brand_img02">攤位圖片2:</label>
+            <input id="brand_img02" type="text">
+            <br>
+            <label for="brand_img03">攤位圖片3:</label>
+            <input id="brand_img03" type="text">
+            <br>
+            <label for="brand_img04">攤位圖片4:</label>
+            <input id="brand_img04" type="text">
+            <br>
+            <label for="brand_img05">攤位圖片5:</label>
+            <input id="brand_img05" type="text">
+            <br>
+            <label for="describe">攤位簡介(50字以內):</label>
+            <br>
+            <textarea id="describe" type="text" style="width: 500px; height: 200px;"></textarea>
+            <br>
+            <label for="fb">Facebook:</label>
+            <input id="fb" type="text">
+            <br>
+            <label for="ig">Instagram:</label>
+            <input id="ig" type="text">
+            <br>
+            <label for="web">Web:</label>
+            <input id="web" type="text">
+            <br>
+            
+        </div>
+        <div  class="onestudent allstudent">
+
+        </div>
+    </div>
+    <script>
+        let myphpserver = 'http://localhost/project/api_2_mysql_RESTful.php';
+        btn_all_vendor.onclick = function() {
+            $.ajax({
+                url: myphpserver,
+                contentType: 'application/json',
+                method: 'GET',
+                success: function (x) {
+                    console.log('success:', x);
+                }
+            })
+        }
+        btn_insert_vendor.onclick = function() {
+            $.ajax({
+                url: myphpserver,
+                method: 'POST',
+                contentType: 'application/json',
+                dataType: 'json',
+                data: JSON.stringify({  
+                    brand_name: $('#brand_name').val(),
+                    brand_type: $('#brand_type').val(),
+                    logo_img: $('#logo_img').val(),
+                    brand_img01: $('#brand_img01').val(),
+                    brand_img02: $('#brand_img02').val(),
+                    brand_img03: $('#brand_img03').val(),
+                    brand_img04: $('#brand_img04').val(),
+                    brand_img05: $('#brand_img05').val(),
+                    describe: $('#describe').val(),
+                    fb: $('#fb').val(), 
+                    ig: $('#ig').val(),
+                    web: $('#web').val(),
+                }),
+                success: function (x){
+                    console.log('success:', x);
+                },
+                error: function (error){
+                    console.log('Error:',error.responseText);
+                }
+            })
+        }
+    </script>
+</body>
+</html>
