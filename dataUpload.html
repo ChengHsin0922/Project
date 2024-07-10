@@ -94,8 +94,7 @@
             $.ajax({
                 url: myphpserver,
                 method: 'POST',
-                contentType: 'application/json',
-                dataType: 'json',
+                contentType: 'text/plain',
                 data: JSON.stringify({  
                     brand_name: $('#brand_name').val(),
                     brand_type: $('#brand_type').val(),

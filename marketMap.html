@@ -216,7 +216,6 @@
         <div id="shop">
             <div id="shop_nav">
                 <div id="brand_logo">
-                    <img src="./Image/logo2.jpg" alt="">
                 </div>
                 <p id="brand_name">攤位名稱</p>
             </div>
@@ -237,6 +236,7 @@
         let myphpserver = 'http://localhost/Project/api_1_mysql_RESTful.php';
         let shop_name;
         let shop_describe;
+        let logo_image;
         $(function () {
             $('td').on('click',function () {
                 console.log(this.innerText);   //測試td點擊有反應
@@ -251,9 +251,12 @@
                     // console.log($('#brand_name')[0].innerText);
                     shop_describe = obj['0'].describe;
                     // console.log(obj['0'].describe);
+                    logo_image = obj['0'].logo_image;
+                    console.log(obj['0'].logo_image);
                     $('#brand_name')[0].innerText = shop_name;
                     console.log($('#shop_detail')[0].innerText);
                     $('#shop_detail')[0].innerText = shop_describe;
+                    $('#brand_logo').append(`<img src="${logo_image}">`);
                 }
             })
                 .done(function (y) {
@@ -275,6 +278,7 @@
                 this.innerText = 'favorite_border';
             }
         })
+
     </script>
 </body>
 
