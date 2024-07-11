@@ -12,6 +12,8 @@
         }
         #x2 {
             display: flex;
+            align-content: center;
+            justify-content: center;
         }
         #x2>div:nth-child(1) {
             background-color: lightblue;
@@ -24,11 +26,8 @@
     </style>
 </head>
 <body>
-    <div id="x1">
-        
-    </div>
     <div id="x2" >
-        <div >
+        <div>
             <button id="btn_all_vendor">全部攤位</button>
             <!-- <button id="btnStudent">單一學生</button> -->
             <button id="btn_insert_vendor">新增攤位</button>
@@ -72,10 +71,6 @@
             <label for="web">Web:</label>
             <input id="web" type="text">
             <br>
-            
-        </div>
-        <div  class="onestudent allstudent">
-
         </div>
     </div>
     <script>
