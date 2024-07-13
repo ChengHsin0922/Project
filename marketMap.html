@@ -167,6 +167,7 @@
         .shopDescribe {
             text-align: left;
         }
+        
     </style>
 </head>
 
@@ -248,11 +249,10 @@
         let shop_name;
         let shop_describe;
         let logo_image;
-        $(function () {
-            $('td').on('click',function () {
-                console.log(this.innerText);   //測試td點擊有反應
-                let vidNumber =  this.innerText;
-                $.ajax({
+        let vidNumber
+        // 抓資料function
+        let get_data = function() {
+            $.ajax({
                 url: myphpserver,
                 method: 'GET',
                 data: {vinfo: vidNumber },
@@ -268,15 +268,15 @@
                     $('#shop_detail>p')['0'].innerText = shop_describe;
                 }
             })
-                .done(function (y) {
-                    console.log('done:', y);
-                })
-                .fail(function (z) {
-                    console.log('fail:', z);
-                })
+        };
+        $(function () {
+            $('td').hover(function (event) {
+                console.log(event);
             })
-            $(document).tooltip({
-                
+            $('td').on('click',function () {
+                console.log(this.innerText);   //測試td點擊有反應
+                let vidNumber =  this.innerText;
+                get_data();
             })
         });
         $('#likeBtn').on('click',function () {
