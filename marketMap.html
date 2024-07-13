@@ -7,6 +7,8 @@
     <title>市集地圖</title>
     <!-- jQuery -->
     <script src="jquery-3.7.1.min.js"></script>
+    <!-- jQuery ui -->
+    <script src="jquery-ui.js"></script>
     <!-- font awesome icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -272,9 +274,9 @@
                 .fail(function (z) {
                     console.log('fail:', z);
                 })
-                .always(function (w) {
-                    console.log('always:', w);
-                });
+            })
+            $(document).tooltip({
+                
             })
         });
         $('#likeBtn').on('click',function () {
@@ -285,7 +287,6 @@
                 this.innerText = 'favorite_border';
             }
         })
-
     </script>
 </body>
 
