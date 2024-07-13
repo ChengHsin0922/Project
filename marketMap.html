@@ -8,7 +8,9 @@
     <!-- jQuery -->
     <script src="jquery-3.7.1.min.js"></script>
     <!-- jQuery ui -->
-    <script src="jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
     <!-- font awesome icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -167,7 +169,6 @@
         .shopDescribe {
             text-align: left;
         }
-        
     </style>
 </head>
 
@@ -191,36 +192,36 @@
             </div>
             <table class="shop_loaction">
                 <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td>10</td>
-                    <td>11</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td>14</td>
-                    <td>15</td>
-                    <td>16</td>
-                    <td>17</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>19</td>
-                    <td>20</td>
-                    <td>21</td>
-                    <td>22</td>
-                    <td>23</td>
-                    <td>24</td>
+                    <td title="測試">1</td>
+                    <td title="測試">2</td>
+                    <td title="測試">3</td>
+                    <td title="測試">4</td>
+                    <td title="測試">5</td>
+                    <td title="測試">6</td>
+                </tr> 
+                <tr> 
+                    <td title="測試">7</td>
+                    <td title="測試">8</td>
+                    <td title="測試">9</td>
+                    <td title="測試">10</td>
+                    <td title="測試">11</td>
+                    <td title="測試">12</td>
+                </tr> 
+                <tr> 
+                    <td title="測試">13</td>
+                    <td title="測試">14</td>
+                    <td title="測試">15</td>
+                    <td title="測試">16</td>
+                    <td title="測試">17</td>
+                    <td title="測試">18</td>
+                </tr> 
+                <tr> 
+                    <td title="測試">19</td>
+                    <td title="測試">20</td>
+                    <td title="測試">21</td>
+                    <td title="測試">22</td>
+                    <td title="測試">23</td>
+                    <td title="測試">24</td>
                 </tr>
             </table>
         </div>
@@ -250,9 +251,12 @@
         let shop_describe;
         let logo_image;
         let vidNumber
-        // 抓資料function
-        let get_data = function() {
-            $.ajax({
+        $(function () {
+            //初始化提示框
+            $(document).tooltip();
+            $('td').on('click',function () {
+                vidNumber = this.innerText;
+                $.ajax({
                 url: myphpserver,
                 method: 'GET',
                 data: {vinfo: vidNumber },
@@ -266,27 +270,27 @@
                     //取得攤位描述
                     shop_describe = obj['0'].describe;
                     $('#shop_detail>p')['0'].innerText = shop_describe;
-                }
-            })
-        };
-        $(function () {
-            $('td').hover(function (event) {
-                console.log(event);
-            })
-            $('td').on('click',function () {
+                    }
+                });
                 console.log(this.innerText);   //測試td點擊有反應
-                let vidNumber =  this.innerText;
-                get_data();
+            })
+            $('td').on('mouseover', function() {
+                var this_td = $(this);
+                vidNumber = this.innerText;
+                $.ajax({
+                    url: myphpserver,
+                    method: 'GET',
+                    data: {vinfo: vidNumber },
+                    success: function (obj) {
+                        //透過vinfo號碼取得攤位名稱
+                        shop_name = obj['0'].brand_name;
+                        //取得攤位logo
+                        logo_image = obj['0'].logo_img;
+                        this_td.attr('title', shop_name).tooltip('refresh');;
+                    }
+                });
             })
         });
-        $('#likeBtn').on('click',function () {
-            console.log(this);
-            if(this.innerText == 'favorite_border') {
-                this.innerText = 'favorite';
-            }else {
-                this.innerText = 'favorite_border';
-            }
-        })
     </script>
 </body>
 
