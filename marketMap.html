@@ -4,13 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>市集地圖</title>
+    <data_title>市集地圖</data_title>
     <!-- jQuery -->
     <script src="jquery-3.7.1.min.js"></script>
-    <!-- jQuery ui -->
-    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+    <!-- tooltip ui -->
+    <link rel="stylesheet" href="./css/tooltip.css">
     <!-- font awesome icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -192,12 +190,12 @@
             </div>
             <table class="shop_loaction">
                 <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
+                    <td data_title="測試">1</td>
+                    <td data_title="測試">2</td>
+                    <td data_title="測試">3</td>
+                    <td data_title="測試">4</td>
+                    <td data_title="測試">5</td>
+                    <td data_title="測試">6</td>
                 </tr> 
                 <tr> 
                     <td>7</td>
@@ -253,7 +251,6 @@
         let vidNumber
         $(function () {
             //初始化提示框
-            $(document).tooltip();
             $('td').on('click',function () {
                 vidNumber = this.innerText;
                 $.ajax({
@@ -273,23 +270,23 @@
                     }
                 });
                 console.log(this.innerText);   //測試td點擊有反應
-            })
-            $('td').on('mouseover', function() {
-                var this_td = $(this);
+            });
+            $('td').on('mouseenter', function(vendor) {
                 vidNumber = this.innerText;
                 $.ajax({
-                    url: myphpserver,
-                    method: 'GET',
-                    data: {vinfo: vidNumber },
-                    success: function (obj) {
-                        //透過vinfo號碼取得攤位名稱
-                        shop_name = obj['0'].brand_name;
-                        //取得攤位logo
-                        logo_image = obj['0'].logo_img;
-                        this_td.attr('title', shop_name).tooltip('refresh');;
+                url: myphpserver,
+                method: 'GET',
+                data: {vinfo: vidNumber },
+                success: function (obj) {
+                    //透過vinfo號碼取得攤位名稱
+                    shop_name = obj['0'].brand_name;
+                    //取得攤位描述
+                    shop_describe = obj['0'].describe;
+                    //設置tooltip
+                    vendor.target.attributes['0'].value = `${shop_name} ${shop_describe}`;
                     }
                 });
-            })
+            });
         });
     </script>
 </body>

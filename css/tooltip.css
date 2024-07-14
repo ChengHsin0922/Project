@@ -1,0 +1,54 @@
+[data_title] {
+position: relative;
+}
+[data_title]:hover:before {
+visibility: visible;
+opacity: 0.95; /* 透明度 */
+bottom: calc(100% + 12px);
+box-shadow: 0 0 5px #666; /* 外框陰影 */
+}
+[data_title]:hover:after {
+visibility: visible;
+opacity: 0.95; /* 透明度 */
+bottom: calc(100% + 2px);
+}
+[data_title]:before {
+visibility: hidden;
+position: absolute;
+content: attr(data_title);
+background: #e3f6ff; /* 背景顏色 */
+color: #000000; /* 訊息顏色 */
+width: 130px;
+padding: 5px;
+left: calc((100% - 140px) / 2);
+bottom: calc(100% + 40px);
+font-size: 14px; /* 文字大小 */
+border-radius: 4px;
+text-align: center;
+white-space: pre-line;  /*換行請使用'&#xa;'字串*/
+word-wrap: break-word;
+opacity: 0;
+transition: All 0.5s ease; /* 動畫效果、時間 */
+-webkit-transition: All 0.5s ease;
+-moz-transition: All 0.5s ease;
+-o-transition: All 0.5s ease;
+}
+[data_title]:after {
+visibility: hidden;
+position: absolute;
+color: #e3f6ff; /* 背景顏色 */
+left: calc(50% - 11px);
+content: '';
+bottom: calc(100% + 50px);
+width: 0px;
+height: 0px;
+border-width: 11px 11px 0px;
+border-style: solid dashed dashed dashed;
+border-left-color: transparent;
+border-right-color: transparent;
+opacity: 0;
+transition: All 0.5s ease; /* 動畫效果、時間 */
+-webkit-transition: All 0.5s ease;
+-moz-transition: All 0.5s ease;
+-o-transition: All 0.5s ease;
+}
