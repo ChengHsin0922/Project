@@ -9,18 +9,20 @@
     <script src="jquery-3.7.1.min.js"></script>
     <!-- tooltip ui -->
     <link rel="stylesheet" href="./css/tooltip.css">
+    <!-- slider -->
+    <link rel="stylesheet" href="./css/slider.css">
     <!-- font awesome icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <style>
         /* 字型 */
         @font-face {
             font-family: 'ChenYuluoyan-Thin-Monospaced';
-            src: local("ChenYuluoyan-Thin-Monospaced")
-            url('../font/ChenYuluoyan-Thin-Monospaced.woff')format("woff"),
-            url('../font/ChenYuluoyan-Thin-Monospaced.ttf')format("truetype"),
-            url('../font/ChenYuluoyan-Thin-Monospaced.eot')format("embedded-opentype"),
+            src: local("ChenYuluoyan-Thin-Monospaced") url('../font/ChenYuluoyan-Thin-Monospaced.woff')format("woff"),
+                url('../font/ChenYuluoyan-Thin-Monospaced.ttf')format("truetype"),
+                url('../font/ChenYuluoyan-Thin-Monospaced.eot')format("embedded-opentype"),
         }
+
         /* body {
             font-family: 'ChenYuluoyan-Thin-Monospaced';
         } */
@@ -35,6 +37,7 @@
             height: 50px;
             border: 1px solid black;
         }
+
         /* 導覽列 */
 
         /* 主視覺 */
@@ -47,20 +50,23 @@
             height: 150px;
             border: 1px solid black;
         }
+
         /* 主視覺 */
-        
+
         /* 市集地圖、攤位資訊 */
         #shop_container {
             display: flex;
         }
+
         /* 市集地圖、攤位資訊 */
 
-         /* 左側地圖div */
+        /* 左側地圖div */
         #map {
             background-color: #ffffff;
             flex: 1;
             border: 1px solid black;
         }
+
         /* 左側地圖div */
 
         /* 左側地圖導覽列 */
@@ -72,8 +78,9 @@
             justify-content: center;
             border: 1px solid black;
         }
+
         /* 左側地圖導覽列 */
-        
+
         /* 左側攤位位置 */
         .shop_loaction {
             display: flex;
@@ -82,14 +89,16 @@
             justify-content: center;
             border-spacing: 0 30px;
         }
+
         .shop_loaction td {
             background-color: #9df1df;
             border: 1px solid black;
             padding: 15px;
             cursor: pointer;
         }
+
         /* 左側攤位位置 */
-        
+
         /* 右側攤位資訊 */
         #shop {
             background-color: #ffffff;
@@ -97,17 +106,19 @@
             border: 1px solid black;
             position: relative;
         }
+
         /* 右側攤位資訊 */
 
-        
+
         #shop_nav {
             background-color: #8dcbe6;
             display: flex;
             text-align: center;
             align-items: center;
-            justify-content: flex-start;    
+            justify-content: flex-start;
             border: 1px solid black;
         }
+
         #shop_banner {
             display: flex;
             text-align: center;
@@ -116,6 +127,7 @@
             height: 200px;
             border: 1px solid black;
         }
+
         #shop_detail {
             display: flex;
             background-color: #9df1df;
@@ -125,6 +137,7 @@
             border: 1px solid black;
             padding: 15px;
         }
+
         #shop_btn {
             display: flex;
             background-color: #e3f6ff;
@@ -139,19 +152,23 @@
             border: 1px solid black;
             padding: 5px;
         }
+
         #shop_btn>i {
             cursor: pointer;
             margin: 1px;
         }
+
         ul {
             display: flex;
             list-style: none;
             border: 1px solid black;
         }
+
         ul>li {
             margin-right: 50px;
             border: 1px solid black;
         }
+
         #brand_logo {
             border: 1px solid black;
             width: 65px;
@@ -160,10 +177,12 @@
             overflow: hidden;
             margin-right: 50px;
         }
+
         #brand_logo>img {
             max-width: 100%;
             max-height: 100%;
         }
+
         .shopDescribe {
             text-align: left;
         }
@@ -196,24 +215,24 @@
                     <td data_title="測試">4</td>
                     <td data_title="測試">5</td>
                     <td data_title="測試">6</td>
-                </tr> 
-                <tr> 
+                </tr>
+                <tr>
                     <td>7</td>
                     <td>8</td>
                     <td>9</td>
                     <td>10</td>
                     <td>11</td>
                     <td>12</td>
-                </tr> 
-                <tr> 
+                </tr>
+                <tr>
                     <td>13</td>
                     <td>14</td>
                     <td>15</td>
                     <td>16</td>
                     <td>17</td>
                     <td>18</td>
-                </tr> 
-                <tr> 
+                </tr>
+                <tr>
                     <td>19</td>
                     <td>20</td>
                     <td>21</td>
@@ -231,6 +250,82 @@
                 <h3 id="brand_name">攤位名稱</h3>
             </div>
             <div id="shop_banner">
+                <ul class="slides">
+                    <input type="radio" name="radio-btn" id="img-1" checked />
+                    <li class="slide-container">
+                        <div class="slide">
+                            <img src="http://farm9.staticflickr.com/8072/8346734966_f9cd7d0941_z.jpg" />
+                        </div>
+                        <div class="nav">
+                            <label for="img-6" class="prev">&#x2039;</label>
+                            <label for="img-2" class="next">&#x203a;</label>
+                        </div>
+                    </li>
+
+                    <input type="radio" name="radio-btn" id="img-2" />
+                    <li class="slide-container">
+                        <div class="slide">
+                            <img src="http://farm9.staticflickr.com/8504/8365873811_d32571df3d_z.jpg" />
+                        </div>
+                        <div class="nav">
+                            <label for="img-1" class="prev">&#x2039;</label>
+                            <label for="img-3" class="next">&#x203a;</label>
+                        </div>
+                    </li>
+
+                    <input type="radio" name="radio-btn" id="img-3" />
+                    <li class="slide-container">
+                        <div class="slide">
+                            <img src="http://farm9.staticflickr.com/8068/8250438572_d1a5917072_z.jpg" />
+                        </div>
+                        <div class="nav">
+                            <label for="img-2" class="prev">&#x2039;</label>
+                            <label for="img-4" class="next">&#x203a;</label>
+                        </div>
+                    </li>
+
+                    <input type="radio" name="radio-btn" id="img-4" />
+                    <li class="slide-container">
+                        <div class="slide">
+                            <img src="http://farm9.staticflickr.com/8061/8237246833_54d8fa37f0_z.jpg" />
+                        </div>
+                        <div class="nav">
+                            <label for="img-3" class="prev">&#x2039;</label>
+                            <label for="img-5" class="next">&#x203a;</label>
+                        </div>
+                    </li>
+
+                    <input type="radio" name="radio-btn" id="img-5" />
+                    <li class="slide-container">
+                        <div class="slide">
+                            <img src="http://farm9.staticflickr.com/8055/8098750623_66292a35c0_z.jpg" />
+                        </div>
+                        <div class="nav">
+                            <label for="img-4" class="prev">&#x2039;</label>
+                            <label for="img-6" class="next">&#x203a;</label>
+                        </div>
+                    </li>
+
+                    <input type="radio" name="radio-btn" id="img-6" />
+                    <li class="slide-container">
+                        <div class="slide">
+                            <img src="http://farm9.staticflickr.com/8195/8098750703_797e102da2_z.jpg" />
+                        </div>
+                        <div class="nav">
+                            <label for="img-5" class="prev">&#x2039;</label>
+                            <label for="img-1" class="next">&#x203a;</label>
+                        </div>
+                    </li>
+                    <!-- 輪播圖節點 -->
+                    <li class="nav-dots">
+                        <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+                        <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+                        <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+                        <label for="img-4" class="nav-dot" id="img-dot-4"></label>
+                        <label for="img-5" class="nav-dot" id="img-dot-5"></label>
+                        <label for="img-6" class="nav-dot" id="img-dot-6"></label>
+                    </li>
+                </ul>
                 <h4>攤位主視覺</h4>
             </div>
             <div id="shop_detail">
@@ -250,39 +345,39 @@
         let logo_image;
         let vidNumber
         $(function () {
-            $('td').on('click',function () {
+            $('td').on('click', function () {
                 vidNumber = this.innerText;
                 $.ajax({
-                url: myphpserver,
-                method: 'GET',
-                data: {vinfo: vidNumber },
-                success: function (obj) {
-                    //透過vinfo號碼取得攤位名稱
-                    shop_name = obj['0'].brand_name;
-                    $('#brand_name')[0].innerText = shop_name;
-                    //取得攤位logo
-                    logo_image = obj['0'].logo_img;
-                    $('#brand_logo>img')['0'].src = logo_image;
-                    //取得攤位描述
-                    shop_describe = obj['0'].describe;
-                    $('#shop_detail>p')['0'].innerText = shop_describe;
+                    url: myphpserver,
+                    method: 'GET',
+                    data: { vinfo: vidNumber },
+                    success: function (obj) {
+                        //透過vinfo號碼取得攤位名稱
+                        shop_name = obj['0'].brand_name;
+                        $('#brand_name')[0].innerText = shop_name;
+                        //取得攤位logo
+                        logo_image = obj['0'].logo_img;
+                        $('#brand_logo>img')['0'].src = logo_image;
+                        //取得攤位描述
+                        shop_describe = obj['0'].describe;
+                        $('#shop_detail>p')['0'].innerText = shop_describe;
                     }
                 });
                 console.log(this.innerText);   //測試td點擊有反應
             });
-            $('td').on('mouseenter', function(vendor) {
+            $('td').on('mouseenter', function (vendor) {
                 vidNumber = this.innerText;
                 $.ajax({
-                url: myphpserver,
-                method: 'GET',
-                data: {vinfo: vidNumber },
-                success: function (obj) {
-                    //透過vinfo號碼取得攤位名稱
-                    shop_name = obj['0'].brand_name;
-                    //取得攤位描述
-                    shop_describe = obj['0'].describe;
-                    //設置tooltip
-                    vendor.target.attributes['0'].value = `${shop_name} ${shop_describe}`;
+                    url: myphpserver,
+                    method: 'GET',
+                    data: { vinfo: vidNumber },
+                    success: function (obj) {
+                        //透過vinfo號碼取得攤位名稱
+                        shop_name = obj['0'].brand_name;
+                        //取得攤位描述
+                        shop_describe = obj['0'].describe;
+                        //設置tooltip
+                        vendor.target.attributes['0'].value = `${shop_name} ${shop_describe}`;
                     }
                 });
             });
