@@ -248,7 +248,9 @@
                 <h3 id="brand_name">攤位名稱</h3>
             </div>
             <div id="shop_banner">
-                
+                <div id="img_container">
+                    <img src="" alt="">
+                </div>
             </div>
             <div id="shop_detail">
                 <p class="shopDescribe">攤位資訊</p>
@@ -283,6 +285,8 @@
                         //取得攤位描述
                         shop_describe = obj['0'].describe;
                         $('#shop_detail>p')['0'].innerText = shop_describe;
+                        //取得攤位圖片
+                        
                     }
                 });
                 console.log(this.innerText);   //測試td點擊有反應
