@@ -1,0 +1,178 @@
+
+        /* 字型 */
+        @font-face {
+            font-family: 'ChenYuluoyan-Thin-Monospaced';
+            src: local("ChenYuluoyan-Thin-Monospaced") url('../font/ChenYuluoyan-Thin-Monospaced.woff')format("woff"),
+                url('../font/ChenYuluoyan-Thin-Monospaced.ttf')format("truetype"),
+                url('../font/ChenYuluoyan-Thin-Monospaced.eot')format("embedded-opentype"),
+        }
+
+        /* body {
+            font-family: 'ChenYuluoyan-Thin-Monospaced';
+        } */
+        /* 導覽列 */
+        #nav_bar {
+            background-color: #8dcbe6;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            border: 1px solid black;
+        }
+
+        /* 導覽列 */
+
+        /* 主視覺 */
+        #banner {
+            background-color: #ffffff;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+            border: 1px solid black;
+        }
+
+        /* 主視覺 */
+
+        /* 市集地圖、攤位資訊 */
+        #shop_container {
+            display: flex;
+        }
+
+        /* 市集地圖、攤位資訊 */
+
+        /* 左側地圖div */
+        #map {
+            background-color: #ffffff;
+            flex: 1;
+            border: 1px solid black;
+        }
+
+        /* 左側地圖div */
+
+        /* 左側地圖導覽列 */
+        #map_nav {
+            background-color: #8dcbe6;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            border: 1px solid black;
+        }
+
+        /* 左側地圖導覽列 */
+
+        /* 左側攤位位置 */
+        .shop_loaction {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            border-spacing: 0 30px;
+        }
+
+        .shop_loaction td {
+            background-color: #9df1df;
+            border: 1px solid black;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        /* 左側攤位位置 */
+
+        /* 右側攤位資訊 */
+        #shop {
+            background-color: #ffffff;
+            flex: 1;
+            border: 1px solid black;
+            position: relative;
+            margin-bottom: 0;
+        }
+
+        /* 右側攤位資訊 */
+
+
+        #shop_nav {
+            background-color: #8dcbe6;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: flex-start;
+            border: 1px solid black;
+            height: 80px;
+        }
+
+        #shop_banner {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            border: 1px solid black;
+        }
+
+        #shop_detail {
+            display: flex;
+            background-color: #9df1df;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid black;
+            padding: 15px;
+            height: 100px;
+            margin-bottom: 0;
+        }
+
+        #shop_btn {
+            display: flex;
+            background-color: #e3f6ff;
+            text-align: center;
+            align-items: baseline;
+            justify-content: center;
+            float: right;
+            height: 30px;
+            width: 150px;
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        #shop_btn>i {
+            cursor: pointer;
+            margin: 1px;
+        }
+
+        ul {
+            display: flex;
+            list-style: none;
+            border: 1px solid black;
+        }
+
+        ul>li {
+            margin-right: 50px;
+            border: 1px solid black;
+        }
+
+        #brand_logo {
+            border: 1px solid black;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 30px;
+            margin-left: 10px;
+        }
+
+        #brand_logo>img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        #img_container>img {
+            width: 300px;
+            height: 180px;
+        }
+        .shopDescribe {
+            text-align: left;
+        }
