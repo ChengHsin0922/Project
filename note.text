@@ -6,4 +6,7 @@
             ALTER TABLE 資料表名稱 AUTO_INCREMENT =1;
 背景泡泡效果:https://www.youtube.com/watch?v=wuUSVEcK-kM
 NavBar範例:https://www.youtube.com/watch?v=ArTVfdHOB-M&list=PL5e68lK9hEzc8P9BJCSX1k9C8uKAV5Oa5&index=4
-提示框參考網站:https://ww.wfublog.com/2014/12/css-tooltip-triangle-align-center.html
+提示框參考網站:https://ww.wfublog.com/2014/12/css-tooltip-triangle-align-center.
+
+
+7/15，開始製作我要擺攤功能，類似買電影票的概念，最多選2個攤位，攤位須相鄰，已被選擇的攤位顯示灰色
