@@ -74,6 +74,7 @@
             text-align: center;
             align-items: center;
             justify-content: center;
+            height: 80px;
             border: 1px solid black;
         }
 
@@ -103,6 +104,7 @@
             flex: 1;
             border: 1px solid black;
             position: relative;
+            margin-bottom: 0;
         }
 
         /* 右側攤位資訊 */
@@ -115,6 +117,7 @@
             align-items: center;
             justify-content: flex-start;
             border: 1px solid black;
+            height: 80px;
         }
 
         #shop_banner {
@@ -134,6 +137,8 @@
             justify-content: center;
             border: 1px solid black;
             padding: 15px;
+            height: 100px;
+            margin-bottom: 0;
         }
 
         #shop_btn {
@@ -142,11 +147,9 @@
             text-align: center;
             align-items: baseline;
             justify-content: center;
-            position: absolute;
-            bottom: 0;
-            right: 0;
+            float: right;
             height: 30px;
-            width: 30%;
+            width: 150px;
             border: 1px solid black;
             padding: 5px;
         }
@@ -173,14 +176,18 @@
             height: 65px;
             border-radius: 50%;
             overflow: hidden;
-            margin-right: 50px;
+            margin-right: 30px;
+            margin-left: 10px;
         }
 
         #brand_logo>img {
             max-width: 100%;
             max-height: 100%;
         }
-
+        #img_container>img {
+            width: 300px;
+            height: 180px;
+        }
         .shopDescribe {
             text-align: left;
         }
@@ -267,8 +274,31 @@
         let shop_name;
         let shop_describe;
         let logo_image;
+        let brand_image;
         let vidNumber
         $(function () {
+            // 預設先抓資料庫第一筆資料
+            $.ajax({
+                    url: myphpserver,
+                    method: 'GET',
+                    data: { vinfo: vidNumber },
+                    success: function (obj) {
+                        //透過vinfo號碼取得攤位名稱
+                        shop_name = obj['0'].brand_name;
+                        $('#brand_name')[0].innerText = shop_name;
+                        //取得攤位logo
+                        logo_image = obj['0'].logo_img;
+                        $('#brand_logo>img')['0'].src = logo_image;
+                        // 取得攤位圖片
+                        brand_image = obj['0'].brand_img01; 
+                        $('#img_container>img')['0'].src = brand_image;
+                        //取得攤位描述
+                        shop_describe = obj['0'].describe;
+                        $('#shop_detail>p')['0'].innerText = shop_describe;
+                        
+                    }
+                });
+            // 點擊取得資料
             $('td').on('click', function () {
                 vidNumber = this.innerText;
                 $.ajax({
@@ -282,15 +312,16 @@
                         //取得攤位logo
                         logo_image = obj['0'].logo_img;
                         $('#brand_logo>img')['0'].src = logo_image;
+                        // 取得攤位圖片
+                        brand_image = obj['0'].brand_img02; 
+                        $('#img_container>img')['0'].src = brand_image;
                         //取得攤位描述
                         shop_describe = obj['0'].describe;
                         $('#shop_detail>p')['0'].innerText = shop_describe;
-                        //取得攤位圖片
-                        
                     }
                 });
-                console.log(this.innerText);   //測試td點擊有反應
             });
+            // hover預覽攤位名稱
             $('td').on('mouseenter', function (vendor) {
                 vidNumber = this.innerText;
                 $.ajax({
