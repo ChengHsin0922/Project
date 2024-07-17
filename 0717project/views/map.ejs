@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市集地圖</title>
+    <!-- jQuery -->
+    <script src="/jquery-3.7.1.min.js"></script>
+    <!-- tooltip ui -->
+    <link rel="stylesheet" href="/css/tooltip.css">
+    <!-- font awesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- style -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    
+    <div id="nav_bar">
+        <h2>
+            導覽列
+        </h2>
+    </div>
+    <div>
+        <div id="banner">
+            <h2>
+                主視覺
+            </h2>
+        </div>
+    </div>
+    <div id="shop_container">
+        <div id="map">
+            <div id="map_nav">
+                <h4>地圖導覽列</h4>
+            </div>
+            <table class="shop_loaction">
+                <tr>
+                    <td data_title="測試">1</td>
+                    <td data_title="測試">2</td>
+                    <td data_title="測試">3</td>
+                    <td data_title="測試">4</td>
+                    <td data_title="測試">5</td>
+                    <td data_title="測試">6</td>
+                </tr>
+                <tr>
+                    <td data_title="測試">7</td>
+                    <td data_title="測試">8</td>
+                    <td data_title="測試">9</td>
+                    <td data_title="測試">10</td>
+                    <td data_title="測試">11</td>
+                    <td data_title="測試">12</td>
+                </tr> 
+                <tr> 
+                    <td data_title="測試">13</td>
+                    <td data_title="測試">14</td>
+                    <td data_title="測試">15</td>
+                    <td data_title="測試">16</td>
+                    <td data_title="測試">17</td>
+                    <td data_title="測試">18</td>
+                </tr> 
+                <tr> 
+                    <td data_title="測試">19</td>
+                    <td data_title="測試">20</td>
+                    <td data_title="測試">21</td>
+                    <td data_title="測試">22</td>
+                    <td data_title="測試">23</td>
+                    <td data_title="測試">24</td>
+                </tr>
+            </table>
+        </div>
+        <div id="shop">
+            <div id="shop_nav">
+                <div id="brand_logo">
+                    <img src="" class="">
+                </div>
+                <h3 id="brand_name">攤位名稱</h3>
+            </div>
+            <div id="shop_banner">
+                <div id="img_container">
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div id="shop_detail">
+                <p class="shopDescribe">攤位資訊</p>
+            </div>
+            <div id="shop_btn">
+                <i class="fa fa-instagram" style="font-size:30px"></i>
+                <i class="fa fa-facebook-square" style="font-size:30px"></i>
+                <i class="fa fa-twitter" style="font-size:30px"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        let myphpserver = 'http://localhost/Project/api_2_mysql_RESTful.php';
+        let shop_name;
+        let shop_content;
+        let logo_image;
+        let brand_image;
+        let vidNumber;
+        $(function () {
+            // 預設先抓資料庫第一筆資料
+            $.ajax({
+                    url: myphpserver,
+                    method: 'GET',
+                    data: { vinfo: vidNumber },
+                    success: function (obj) {
+                        console.log('ok');
+                        //透過vinfo號碼取得攤位名稱
+                        shop_name = obj['0'].brand_name;
+                        $('#brand_name')[0].innerText = shop_name;
+                        //取得攤位logo
+                        logo_image = obj['0'].logo_img;
+                        $('#brand_logo>img')['0'].src = logo_image;
+                        // 取得攤位圖片
+                        brand_image = obj['0'].brand_img01; 
+                        $('#img_container>img')['0'].src = brand_image;
+                        //取得攤位描述
+                        shop_content = obj['0'].content;
+                        $('#shop_detail>p')['0'].innerText = shop_content;
+                    }
+                });
+            // 點擊取得資料
+            $('td').on('click', function () {
+                vidNumber = this.innerText;
+                $.ajax({
+                    url: myphpserver,
+                    method: 'GET',
+                    data: { vinfo: vidNumber },
+                    success: function (obj) {
+                        //透過vinfo號碼取得攤位名稱
+                        console.log('ok');
+                        shop_name = obj['0'].brand_name;
+                        $('#brand_name')[0].innerText = shop_name;
+                        //取得攤位logo
+                        logo_image = obj['0'].logo_img;
+                        $('#brand_logo>img')['0'].src = logo_image;
+                        // 取得攤位圖片
+                        brand_image = obj['0'].brand_img02; 
+                        $('#img_container>img')['0'].src = brand_image;
+                        //取得攤位描述
+                        shop_content = obj['0'].content;
+                        $('#shop_detail>p')['0'].innerText = shop_content;
+                    }
+                });
+            });
+            // hover預覽攤位名稱
+            $('td').on('mouseenter', function (vendor) {
+                vidNumber = this.innerText;
+                $.ajax({
+                    url: myphpserver,
+                    method: 'GET',
+                    data: { vinfo: vidNumber },
+                    success: function (obj) {
+                        //透過vinfo號碼取得攤位名稱
+                        shop_name = obj['0'].brand_name;
+                        //取得攤位描述
+                        // shop_describe = obj['0'].describe;
+                        //設置tooltip
+                        vendor.target.attributes['0'].value = shop_name;
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>

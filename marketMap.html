@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>市集地圖</title>
     <!-- jQuery -->
-    <script src="jquery-3.7.1.min.js"></script>
+    <script src="/jquery-3.7.1.min.js"></script>
     <!-- tooltip ui -->
     <link rel="stylesheet" href="./css/tooltip.css">
     <!-- font awesome icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- main css -->
-    <link rel="stylesheet" href="./css/main.css">
+    <!-- css -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -111,10 +111,10 @@
                         //取得攤位logo
                         logo_image = obj['0'].logo_img;
                         $('#brand_logo>img')['0'].src = logo_image;
-                        // 取得攤位圖片
+                        // // 取得攤位圖片
                         brand_image = obj['0'].brand_img01; 
                         $('#img_container>img')['0'].src = brand_image;
-                        //取得攤位描述
+                        // //取得攤位描述
                         shop_content = obj['0'].content;
                         $('#shop_detail>p')['0'].innerText = shop_content;
                     }
@@ -153,10 +153,12 @@
                     success: function (obj) {
                         //透過vinfo號碼取得攤位名稱
                         shop_name = obj['0'].brand_name;
+                        //取得攤位logo
+                        logo_image = obj['0'].logo_img;
                         //取得攤位描述
                         // shop_describe = obj['0'].describe;
                         //設置tooltip
-                        vendor.target.attributes['0'].value = shop_name;
+                        vendor.target.attributes['0'].value = `<img src="${logo_image}"> + ${shop_name}`;
                     }
                 });
             });
