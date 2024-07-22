@@ -150,12 +150,16 @@
                     method: 'GET',
                     data: { vinfo: vidNumber },
                     success: function (obj) {
+                        console.log(logo_image);
                         //透過vinfo號碼取得攤位名稱
                         shop_name = obj['0'].brand_name;
+                        //取得攤位logo
+                        logo_image = obj['0'].logo_img;
                         //取得攤位描述
                         // shop_describe = obj['0'].describe;
                         //設置tooltip
-                        vendor.target.attributes['0'].value = shop_name;
+                        vendor.target.attributes.data_title.value = logo_image + shop_name;
+                        // vendor.target.attributes.data_title.value = shop_name;
                     }
                 });
             });

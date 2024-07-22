@@ -15,8 +15,10 @@ bottom: calc(100% + 2px);
 [data_title]:before {
 visibility: hidden;
 position: absolute;
-content: attr(data_title);   /* 控制提示框資料型態 */
-background: #e3f6ff; /* 背景顏色 */
+content: attr(data_title); /* 控制提示框資料型態 */
+/* background-image: url(../vendor/logo/logo1.jpg); 提示框圖片 */
+background-size: cover;
+background: #e3f6ff; /*背景顏色*/
 color: #000000; /* 訊息顏色 */
 width: 130px;
 padding: 5px;
@@ -38,7 +40,7 @@ visibility: hidden;
 position: absolute;
 color: #e3f6ff; /* 背景顏色 */
 left: calc(50% - 11px);
-content: '';
+content: attr(data_title);
 bottom: calc(100% + 50px);
 width: 0px;
 height: 0px;
