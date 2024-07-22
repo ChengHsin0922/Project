@@ -15,7 +15,7 @@ bottom: calc(100% + 2px);
 [data_title]:before {
 visibility: hidden;
 position: absolute;
-content: attr(data_title); /* 控制提示框資料型態 */
+content: url(data_title); /* 控制提示框資料型態 */
 /* background-image: url(../vendor/logo/logo1.jpg); 提示框圖片 */
 background-size: cover;
 background: #e3f6ff; /*背景顏色*/

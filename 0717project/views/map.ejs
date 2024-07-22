@@ -103,7 +103,6 @@
                     method: 'GET',
                     data: { vinfo: vidNumber },
                     success: function (obj) {
-                        console.log('ok');
                         //透過vinfo號碼取得攤位名稱
                         shop_name = obj['0'].brand_name;
                         $('#brand_name')[0].innerText = shop_name;
@@ -158,7 +157,7 @@
                         //取得攤位描述
                         // shop_describe = obj['0'].describe;
                         //設置tooltip
-                        vendor.target.attributes.data_title.value = logo_image + shop_name;
+                        vendor.target.attributes.data_title.value = '<img src="\\vendor\\image.jpg">';
                         // vendor.target.attributes.data_title.value = shop_name;
                     }
                 });
