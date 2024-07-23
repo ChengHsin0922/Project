@@ -10,8 +10,8 @@ app.get("/", function (req, res) {
 // //市集地圖
 app.get('/map', function(req, res) {
     conn.query(
-        "SELECT * FROM vendor_info WHERE vinfo = ?",
-        [vinfo],
+        "SELECT * FROM vendor_info WHERE vinfo = 1",
+        [],
         function(err, result) {
             console.log(result);
             res.render('map.ejs',{info: result});
