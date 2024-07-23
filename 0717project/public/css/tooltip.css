@@ -15,8 +15,11 @@ bottom: calc(100% + 2px);
 [data_title]:before {
 visibility: hidden;
 position: absolute;
-content: attr(data_title);   /* 控制提示框資料型態 */
-background: #e3f6ff; /* 背景顏色 */
+content: attr(data_title);   /*控制提示框資料型態*/
+background-color: #e3f6ff;  /*背景顏色*/
+/* background-image: url();  
+background-size: contain;
+background-repeat: no-repeat; */
 color: #000000; /* 訊息顏色 */
 width: 130px;
 padding: 5px;
