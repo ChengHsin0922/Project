@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購票系統</title>
+    <link rel="stylesheet" href="/css/rentVendor.css">
+</head>
+
+<body>
+    <section id="section">
+        <div class="container">
+            <!-- leftCont -->
+            <div class="leftCont">
+                <div class="leftMainCont">
+                    <div class="legendContainer">
+                        <ul>
+                            <li>
+                                <div class="seat legend"></div>
+                                <small>可選攤位</small>
+                            </li>
+                            <li>
+                                <div class="seat legend selected"></div>
+                                <small>已選攤位</small>
+                            </li>
+                            <li>
+                                <div class="seat legend"></div>
+                                <small>已出租</small>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- seat Container -->
+                    <div class="mainSeatCont">
+                        <div class="screen">
+                            <small>SCREEN</small>
+                        </div>
+                        <div class="seatCont" id="seatCont">
+                            <div class="seatRowCont1 seatRowCont">
+                                <div class="row">
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Cont -->
+            <div class="rightCont">
+                <div class="confirmCont">
+                    <div class="rightTopCont">
+                        <!-- moviename -->
+
+                        <div class="movieInfo">
+                            <div class="selectMovie">
+                                <label>
+                                    <p>選擇電影院</p>
+                                    <select id="selectMovie"></select>
+                                </label>
+                            </div>
+                            <div class="movieName">
+                                <p>電影名稱</p>
+                                <h1 id="movieName">星際效應</h1>
+                            </div>
+                            <div class="moviePrice">
+                                <p>票價</p>
+                                <h1 id="moviePrice">$ 280</h1>
+                            </div>
+                            <div class="dateCont">
+                                <div class="custom-input">
+                                    <p>日期選擇</p>
+                                    <input type="date" id="dateInput" class="form-control" min="2024-06-04" max="2024-06-30">
+                                </div>
+                                <div class="custom-input">
+                                    <p>場次選擇</p>
+                                    <select id="timeInput" class="form-control">
+                                        <option value="24:00">00:00</option>
+                                        <option value="03:00">03:00</option>
+                                        <option value="06:00">06:00</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="18:00">18:00</option>
+                                        <option value="21:00">21:00</option>
+                                    </select>
+                                </div>
+                                <!-- 場次 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rightBottomCont">
+                        <div class="selectedSeatCont">
+                            <p>已選擇座位</p>
+                            <div class="selectedSeatsHolder" id="selectedSeatsHolder">
+                                <span class="noSelected"></span>
+                            </div>
+                        </div>
+                        <!-- Seat number and price -->
+
+                        <div class="numberOfSeatsCont">
+                            <div class="numberOfSeatEl">
+                                <p><span id="numberOfSeat"></span>總計</p>
+                            </div>
+                            <div class="priceCont">
+                                <p id="totalPrice">$ 0</p>
+                            </div>
+                        </div>
+                        <!-- button Cont -->
+
+                        <div class="buttonCont">
+                            <div class="cancelBtn">
+                                <button id="cancelBtn">取消</button>
+                            </div>
+                            <div class="proceedBtnEl">
+                                <button id="proceedBtn">確認</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer></footer>
+<script src="/js/rentVendor.js"></script>
+</body>
+
+
+</html>
