@@ -1,6 +1,12 @@
 var express = require("express");
 var app = express();
-app.listen(3000);
+var mysql = require("mysql");
+var conn = mysql.createConnection({
+    user:'root',
+    password:'',
+    host:'localhost',
+    database:'haoshin'
+})
 
 app.use(express.static(__dirname + "/public"));
 
@@ -9,11 +15,12 @@ app.get("/", function (req, res) {
 });
 // //市集地圖
 app.get('/map', function(req, res) {
+    const vinfo = req.query.vinfo;
     conn.query(
-        "SELECT * FROM vendor_info WHERE vinfo = 1",
-        [],
+        "SELECT * FROM vendor_info WHERE vinfo = ?",
+        [vinfo],
         function(err, result) {
-            console.log(result);
+            console.log(vinfo);
             res.render('map.ejs',{info: result});
         }
     )
@@ -24,11 +31,5 @@ app.get("/rentVendor", function (req, res) {
 })
 
 
-var mysql = require("mysql");
-var conn = mysql.createConnection({
-    user:'root',
-    password:'',
-    host:'localhost',
-    database:'haoshin'
-})
+app.listen(3000);
 
