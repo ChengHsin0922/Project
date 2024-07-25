@@ -15,16 +15,17 @@ app.get("/", function (req, res) {
 });
 // //市集地圖
 app.get('/map', function(req, res) {
-    const vinfo = req.query.vinfo;
-    conn.query(
-        "SELECT * FROM vendor_info WHERE vinfo = ?",
-        [vinfo],
-        function(err, result) {
-            console.log(vinfo);
-            res.render('map.ejs',{info: result});
-        }
-    )
-})
+    const vinfo = req.query.vinfo; 
+        conn.query(
+            "SELECT * FROM vendor_info WHERE vinfo = ?",
+            //vinfo 
+            [vinfo || '1'],  
+            function(err, result) {
+                console.log(result);
+                res.render('map.ejs',{info: result});
+            }
+        )
+}) 
 //我要擺攤
 app.get("/rentVendor", function (req, res) {
     res.render('rentVendor.ejs', {});
