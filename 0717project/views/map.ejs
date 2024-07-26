@@ -72,7 +72,8 @@
         <div id="shop">
             <div id="shop_nav">
                 <div id="brand_logo">
-                    <% for (item of info) { %>
+                    <% console.log(info[0].logo_img) %>
+                    <% for(item of info) { %>
                         <img src="<%= `data:image/jpeg;base64, ${Buffer.from(item.logo_img).toString('base64')}` %>"
                             class="">
                         <% } %>
@@ -98,10 +99,20 @@
         </div>
     </div>
     <script>
-        let vinfo;
-        $('td').on('click', function () {
-            vinfo = this.innerText;
-            console.log(vinfo);
+        $(function () {
+            let vinfo;
+            $('td').on('click', function () {
+                vinfo = this.innerText;
+                $.ajax({
+                    url: '/map',
+                    method: 'GET',
+                    data: {vinfo: vinfo},
+                    success: function (response) {
+                        // console.log($('#brand_logo>img')[0].src);
+                        // $('#brand_logo>img')[0].src = info[0].logo_img;
+                    }
+                })
+            })
         })
         // document.querySelectorAll('[data_title]').forEach(function (element) {
         //     element.addEventListener('click', function () {
@@ -166,25 +177,25 @@
             //     });
             // });
         //     // hover預覽攤位名稱
-        //     $('td').on('mouseenter', function (vendor) {
-        //         vidNumber = this.innerText;
-        //         $.ajax({
-        //             url: myphpserver,
-        //             method: 'GET',
-        //             data: { vinfo: vidNumber },
-        //             success: function (obj) {
-        //                 //透過vinfo號碼取得攤位名稱
-        //                 shop_name = obj['0'].brand_name;
-        //                 //取得攤位logo
-        //                 logo_image = obj['0'].logo_img;
-        //                 //取得攤位描述
-        //                 // shop_describe = obj['0'].describe;
-        //                 //設置tooltip
-        //                 vendor.target.attributes.data_title.value = shop_name;
-        //                 // vendor.target.attributes.data_title.value = shop_name;
-        //             }
-        //         });
-        //     });
+            // $('td').on('mouseenter', function (vendor) {
+            //     vidNumber = this.innerText;
+            //     $.ajax({
+            //         url: myphpserver,
+            //         method: 'GET',
+            //         data: { vinfo: vidNumber },
+            //         success: function (obj) {
+            //             //透過vinfo號碼取得攤位名稱
+            //             shop_name = obj['0'].brand_name;
+            //             //取得攤位logo
+            //             logo_image = obj['0'].logo_img;
+            //             //取得攤位描述
+            //             // shop_describe = obj['0'].describe;
+            //             //設置tooltip
+            //             vendor.target.attributes.data_title.value = shop_name;
+            //             // vendor.target.attributes.data_title.value = shop_name;
+            //         }
+            //     });
+            // });
         // });
     </script>
 

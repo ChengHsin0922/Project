@@ -7,13 +7,12 @@ var conn = mysql.createConnection({
     host:'localhost',
     database:'haoshin'
 })
-
+app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
-
 app.get("/", function (req, res) {
     res.send('ok');
 });
-// //市集地圖
+//渲染市集地圖，預設抓vinfo=1的資料
 app.get('/map', function(req, res) {
     const vinfo = req.query.vinfo; 
         conn.query(
@@ -21,11 +20,12 @@ app.get('/map', function(req, res) {
             //vinfo 
             [vinfo || '1'],  
             function(err, result) {
-                console.log(result);
+                // console.log(result);
                 res.render('map.ejs',{info: result});
             }
         )
 }) 
+
 //我要擺攤
 app.get("/rentVendor", function (req, res) {
     res.render('rentVendor.ejs', {});
