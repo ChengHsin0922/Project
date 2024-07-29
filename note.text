@@ -10,3 +10,17 @@ NavBar範例:https://www.youtube.com/watch?v=ArTVfdHOB-M&list=PL5e68lK9hEzc8P9BJ
 
 
 7/15，開始製作我要擺攤功能，類似買電影票的概念，最多選2個攤位，攤位須相鄰，已被選擇的攤位顯示灰色
+
+React.JS
+jQuery:
+$.post(post到哪裡, post甚麼資料, 資料庫返回的資料)
+範例:$("#postButton").on("click", function() {
+                var dataToServer = {
+                    firstName: $("#firstNameTextBox").val(),
+                    lastName: $("#lastNameTextBox").val()
+                }
+                //$.post(要post到哪裡, post甚麼資料, 資料庫返回的資料)
+                $.post('/test', dataToServer, function (dataFromServer) {
+                    $("#resultSpan").text(JSON.stringify(dataFromServer));
+                })
+            })

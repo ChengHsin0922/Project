@@ -5,14 +5,14 @@ var conn = mysql.createConnection({
     user:'root',
     password:'',
     host:'localhost',
-    database:'haoshin'
+    database:'haoshih'
 })
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
 app.get("/", function (req, res) {
     res.send('ok');
 });
-//渲染市集地圖，預設抓vinfo=1的資料
+//渲染市集地圖頁面，預設抓vinfo=1的資料
 app.get('/map', function(req, res) {
     const vinfo = req.query.vinfo; 
         conn.query(
@@ -20,8 +20,25 @@ app.get('/map', function(req, res) {
             //vinfo 
             [vinfo || '1'],  
             function(err, result) {
-                // console.log(result);
-                res.render('map.ejs',{info: result});
+                if(err) {
+                    return res.status(500).send('Database query failed.');
+                }
+                res.render('map.ejs',{dataFromServer: result});
+            }
+        )
+})
+//點擊更新資料
+app.get('/data', function(req, res) {
+    const vinfo = req.query.vinfo; 
+        conn.query(
+            "SELECT * FROM vendor_info WHERE vinfo = ?",
+            //vinfo 
+            [vinfo || '1'],  
+            function(err, result) {
+                if(err) {
+                    return res.status(500).send('Database query failed.');
+                }
+                res.json({dataFromServer: result});
             }
         )
 }) 
@@ -32,5 +49,5 @@ app.get("/rentVendor", function (req, res) {
 })
 
 
-app.listen(3000);
+app.listen(4000);
 

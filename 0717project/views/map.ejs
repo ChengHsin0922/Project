@@ -72,9 +72,9 @@
         <div id="shop">
             <div id="shop_nav">
                 <div id="brand_logo">
-                    <% console.log(info[0].logo_img) %>
-                    <% for(item of info) { %>
-                        <img src="<%= `data:image/jpeg;base64, ${Buffer.from(item.logo_img).toString('base64')}` %>"
+                    <% console.log(dataFromServer) %>
+                    <% for(vendor of dataFromServer) { %>
+                        <img src="<%= `data:image/jpeg;base64, ${Buffer.from(vendor.logo_img).toString('base64')}` %>"
                             class="">
                         <% } %>
                 </div>
@@ -82,13 +82,13 @@
             </div>
             <div id="shop_banner">
                 <div id="img_container">
-                    <img src="<%= `data:image/jpeg;base64, ${Buffer.from(item.brand_img01).toString('base64')}` %>"
+                    <img src="<%= `data:image/jpeg;base64, ${Buffer.from(vendor.brand_img01).toString('base64')}` %>"
                         alt="">
                 </div>
             </div>
             <div id="shop_detail">
                 <p class="shopDescribe">
-                    <%= item.content %>
+                    <%= vendor.content %>
                 </p>
             </div>
             <div id="shop_btn">
@@ -100,16 +100,35 @@
     </div>
     <script>
         $(function () {
-            let vinfo;
+            //點擊變更攤販資料
             $('td').on('click', function () {
                 vinfo = this.innerText;
                 $.ajax({
-                    url: '/map',
+                    url: '/data',
                     method: 'GET',
                     data: {vinfo: vinfo},
-                    success: function (response) {
-                        // console.log($('#brand_logo>img')[0].src);
-                        // $('#brand_logo>img')[0].src = info[0].logo_img;
+                    dataType: 'json',
+                    success: function (obj) {
+                        //以下兩行為陣列轉成base64方法
+                        // const arrayTransform = Uint8Array.from(obj.dataFromServer[0].logo_img.data);
+                        // const base64Encoded = btoa(String.fromCharCode.apply(null, arrayTransform))
+                        
+                        //攤販logo
+                        const logoTransform = Uint8Array.from(obj.dataFromServer[0].logo_img.data);
+                        const logoToBase64 = btoa(String.fromCharCode.apply(null, logoTransform))
+                        $('#brand_logo>img')[0].src = `data:image/jpeg;base64,${logoToBase64}`;
+                        
+                        //攤販image
+                        const imageTransform = Uint8Array.from(obj.dataFromServer[0].brand_img01.data);
+                        const imageToBase64 = btoa(String.fromCharCode.apply(null, imageTransform))
+                        $('#img_container>img')['0'].src = `data:image/jpeg;base64,${imageToBase64}`;
+
+                        //攤販content
+                        const vendorContent = obj.dataFromServer[0].content;
+                        $('#shop_detail>p')['0'].innerText = vendorContent;
+                    },
+                    error: function (error) {
+                        console.log('Error:', error);
                     }
                 })
             })
