@@ -125,6 +125,7 @@
 
                         //攤販content
                         const vendorContent = obj.dataFromServer[0].content;
+                        console.log(vendorContent);
                         $('#shop_detail>p')['0'].innerText = vendorContent;
                     },
                     error: function (error) {

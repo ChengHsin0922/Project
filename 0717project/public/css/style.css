@@ -124,6 +124,7 @@
             padding: 15px;
             height: 100px;
             margin-bottom: 0;
+            overflow: scroll;
         }
 
         #shop_btn {
@@ -175,5 +176,4 @@
         }
         .shopDescribe {
             text-align: left;
-            
         }
