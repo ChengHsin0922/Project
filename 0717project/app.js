@@ -17,13 +17,12 @@ app.get('/map', function(req, res) {
     const vinfo = req.query.vinfo; 
         conn.query(
             "SELECT * FROM vendor_info WHERE vinfo = ?",
-            //vinfo 
             [vinfo || '1'],  
             function(err, result) {
                 if(err) {
                     return res.status(500).send('Database query failed.');
                 }
-                res.render('map.ejs',{dataFromServer: result});
+                res.render('map.ejs',{data_from_server: result});
             }
         )
 })
@@ -32,13 +31,12 @@ app.get('/data', function(req, res) {
     const vinfo = req.query.vinfo; 
         conn.query(
             "SELECT * FROM vendor_info WHERE vinfo = ?",
-            //vinfo 
-            [vinfo || '1'],  
+            [vinfo],  
             function(err, result) {
                 if(err) {
                     return res.status(500).send('Database query failed.');
                 }
-                res.json({dataFromServer: result});
+                res.json({data_from_server: result});
             }
         )
 }) 

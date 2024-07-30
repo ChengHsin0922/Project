@@ -29,7 +29,7 @@
             </h2>
         </div>
     </div>
-    <div id="shop_container">
+    <div id="market_container">
         <div id="map">
             <div id="map_nav">
                 <h4>地圖導覽列</h4>
@@ -72,13 +72,13 @@
         <div id="shop">
             <div id="shop_nav">
                 <div id="brand_logo">
-                    <% console.log(dataFromServer) %>
-                    <% for(vendor of dataFromServer) { %>
+                    <% console.log(data_from_server) %>
+                    <% for(vendor of data_from_server) { %>
                         <img src="<%= `data:image/jpeg;base64, ${Buffer.from(vendor.logo_img).toString('base64')}` %>"
                             class="">
                         <% } %>
                 </div>
-                <h3 id="brand_name">攤位名稱</h3>
+                <h3 id="brand_name"><%= vendor.brand_name %></h3>
             </div>
             <div id="shop_banner">
                 <div id="img_container">
@@ -88,7 +88,7 @@
             </div>
             <div id="shop_detail">
                 <p class="shopDescribe">
-                    <%= vendor.content %>
+                    <%- vendor.content.replace(/\n/g, '<br>') %>
                 </p>
             </div>
             <div id="shop_btn">
@@ -109,24 +109,25 @@
                     data: {vinfo: vinfo},
                     dataType: 'json',
                     success: function (obj) {
-                        //以下兩行為陣列轉成base64方法
-                        // const arrayTransform = Uint8Array.from(obj.dataFromServer[0].logo_img.data);
+                        //以下兩行是陣列轉成base64方法
+                        // const arrayTransform = Uint8Array.from(obj.data_from_server[0].logo_img.data);
                         // const base64Encoded = btoa(String.fromCharCode.apply(null, arrayTransform))
                         
                         //攤販logo
-                        const logoTransform = Uint8Array.from(obj.dataFromServer[0].logo_img.data);
-                        const logoToBase64 = btoa(String.fromCharCode.apply(null, logoTransform))
-                        $('#brand_logo>img')[0].src = `data:image/jpeg;base64,${logoToBase64}`;
-                        
+                        const logo_transform = Uint8Array.from(obj.data_from_server[0].logo_img.data);
+                        const logo_to_base64 = btoa(String.fromCharCode.apply(null, logo_transform))
+                        $('#brand_logo>img')[0].src = `data:image/jpeg;base64,${logo_to_base64}`;
+                        //攤販名稱
+                        console.log(obj.data_from_server[0].brand_name);
+                        const brand_name = obj.data_from_server[0].brand_name;
+                        $('#brand_name')[0].innerText = brand_name;
                         //攤販image
-                        const imageTransform = Uint8Array.from(obj.dataFromServer[0].brand_img01.data);
-                        const imageToBase64 = btoa(String.fromCharCode.apply(null, imageTransform))
-                        $('#img_container>img')['0'].src = `data:image/jpeg;base64,${imageToBase64}`;
-
+                        const image_transform = Uint8Array.from(obj.data_from_server[0].brand_img01.data);
+                        const image_to_base64 = btoa(String.fromCharCode.apply(null, image_transform))
+                        $('#img_container>img')['0'].src = `data:image/jpeg;base64,${image_to_base64}`;
                         //攤販content
-                        const vendorContent = obj.dataFromServer[0].content;
-                        console.log(vendorContent);
-                        $('#shop_detail>p')['0'].innerText = vendorContent;
+                        const vendor_content = obj.data_from_server[0].content;
+                        $('#shop_detail>p')['0'].innerText = vendor_content;
                     },
                     error: function (error) {
                         console.log('Error:', error);

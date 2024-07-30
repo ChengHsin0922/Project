@@ -37,7 +37,7 @@
         /* 主視覺 */
 
         /* 市集地圖、攤位資訊 */
-        #shop_container {
+        #market_container {
             display: flex;
         }
 
@@ -85,7 +85,8 @@
 
         /* 右側攤位資訊 */
         #shop {
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
             flex: 1;
             border: 1px solid black;
             position: relative;
@@ -118,13 +119,12 @@
             display: flex;
             background-color: #9df1df;
             text-align: center;
-            align-items: center;
             justify-content: center;
             border: 1px solid black;
-            padding: 15px;
+            padding: 0;
             height: 100px;
             margin-bottom: 0;
-            overflow: scroll;
+            overflow: overlay;
         }
 
         #shop_btn {
@@ -175,5 +175,9 @@
             height: 180px;
         }
         .shopDescribe {
+            margin: 0;
+            padding: 10px 10px;
             text-align: left;
+            box-sizing: border-box;
+            width: 100%;
         }
